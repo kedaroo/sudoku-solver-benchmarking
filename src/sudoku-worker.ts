@@ -3,7 +3,7 @@ import { solveSudoku } from './sudoku-solver';
 
 if (parentPort) {
     parentPort.on('message', (sudokuPuzzle) => {
-      const { solvable, timeRequired } = solveSudoku(sudokuPuzzle);
-      parentPort!.postMessage({ solvable, timeRequired });
+      const { solvable, timeRequired, invocations } = solveSudoku(sudokuPuzzle);
+      parentPort!.postMessage({ solvable, timeRequired, invocations });
     });
 }

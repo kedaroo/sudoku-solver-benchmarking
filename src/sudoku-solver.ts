@@ -1,17 +1,21 @@
 import { Board } from './create-sudoku-puzzle';
 
+let invocations = 0
 export const solveSudoku = (board: Board) => {
   const start = performance.now();
+  invocations = 0
   const solvable = solve(board);
   const end = performance.now();
 
   return {
     solvable,
     timeRequired: Math.round((end - start) * 10) / 10,
+    invocations
   };
 };
 
 export const solve = (board: Board) => {
+  invocations++
   for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board.length; j++) {
       if (board[i][j] === 0) {

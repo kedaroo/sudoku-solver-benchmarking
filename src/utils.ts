@@ -50,7 +50,7 @@ export const getSubgridId = (
   size: number
 ): string => {
   const divisor = Math.sqrt(size);
-  return `${Math.trunc(row / divisor)}${Math.trunc(col / divisor)}`;
+  return `${Math.trunc(row / size)}${Math.trunc(col / size)}`;
 };
 
 export const getDifficultyValue = (difficultyLevel: DifficultyLevel) => {
@@ -70,7 +70,7 @@ export const mean = (numbers: number[]) => {
   if (numbers.length === 0) return 0;
 
   const sum = numbers.reduce((acc, num) => acc + num, 0);
-  return Math.round((sum / numbers.length) * 100) / 100;
+  return Math.round(sum / numbers.length * 100) / 100;
 };
 
 export const writeBenchmarkResultsToCSV = (
